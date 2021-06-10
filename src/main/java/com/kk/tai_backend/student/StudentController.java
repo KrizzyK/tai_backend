@@ -1,18 +1,18 @@
 package com.kk.tai_backend.student;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Set;
+import java.util.List;
 
 
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("api/student")
+@CrossOrigin
 public class StudentController {
 
     final private StudentService studentService;
@@ -36,7 +36,7 @@ public class StudentController {
     }
 
     @GetMapping
-    public ResponseEntity<Set<StudentEntity>> getAllStudents() {
+    public ResponseEntity<List<StudentEntity>> getAllStudents() {
         try {
             return new ResponseEntity<>( studentService.getAllStudents(), HttpStatus.OK );
         } catch (Exception e) {

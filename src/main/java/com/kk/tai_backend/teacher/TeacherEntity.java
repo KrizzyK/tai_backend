@@ -5,7 +5,9 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -27,7 +29,7 @@ public class TeacherEntity {
     @Column(name="startedwork", nullable = false)
     private Timestamp startedWork;
 
-
-    @OneToMany
-    Set<StudentEntity> students = new HashSet<>();
+    @JoinColumn(name="teacher_id")
+    @OneToMany( cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    List<StudentEntity> students = new ArrayList<>();
 }

@@ -6,11 +6,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Set;
 
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("api/teacher")
+@CrossOrigin
 public class TeacherController {
     final private TeacherService teacherService;
 
@@ -33,7 +35,7 @@ public class TeacherController {
     }
 
     @GetMapping
-    public ResponseEntity<Set<TeacherEntity>> getAllTeachers() {
+    public ResponseEntity<List<TeacherEntity>> getAllTeachers() {
         try {
             return new ResponseEntity<>( teacherService.getAllTeachers(), HttpStatus.OK );
         } catch (Exception e) {

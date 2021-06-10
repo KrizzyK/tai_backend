@@ -27,10 +27,4 @@ public class StudentEntity {
 
     @Column(name="gradeaverage", nullable = true)
     private Double gradeAverage;
-
-    @ManyToOne
-    @JoinColumn(name="teacher")
-    @JsonBackReference
-    private TeacherEntity teacher;
-
 }
